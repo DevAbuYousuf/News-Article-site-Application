@@ -1,14 +1,33 @@
 import React from 'react'
 import { Button } from './components/ui/button'
+import { BrowserRouter } from 'react-router-dom'
+import { Home } from 'lucide-react'
+import { Routes, Route } from 'react-router-dom'
+import SignInForm from './auth/forms/SignInFrom'
+import SignUpForm from './auth/forms/SignUpForm'
+import Dashboard from './pages/Dashboard'
+import About from './pages/About'
+import NewsArticle from './pages/NewsArticle'
+import Header from './components/shared/Header'
 
 const App = () => {
   return (
-     <div className="flex min-h-svh flex-col items-center justify-center">
-      <h1>hello World</h1>
-      <Button className="px-4 py-6 text-red-600 hover:bg-primary-foreground">Click me</Button>
-      <p>This is a paragraph</p>
-    </div>
+     <BrowserRouter>
+     <Header />
+     <Routes>
+      <Route path="/sign-in/" element={<SignInForm />} />
+      <Route path="/sign-up/" element={<SignUpForm />} />
+
+      <Route path="/" element={<Home/>} />
+      <Route path="/about" element={<About />} />
+      <Route path="/news" element={<NewsArticle/>} />
+      <Route path="/dashboard/" element={<Dashboard />} />
+      
+       
+     </Routes>
+     </BrowserRouter>
   )
 }
 
 export default App
+
